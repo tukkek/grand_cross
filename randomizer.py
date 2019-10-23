@@ -408,10 +408,16 @@ class PriceMixin(TableObject):
             while self.price > 65000:
                 self.significand -= 1
 
+class Consumables(TableObject):
+    flag = "o"
+    flag_description = "consumables (without, just gear)"
+    custom_random_enable = True
+
 class PriceObject(PriceMixin):
     BANNED_INDEXES = ([0x00, 0x01, 0xF7, 0xF8] +
                       range(0x6F, 0x81) + range(0xD1, 0xE0))
-    
+    CONSUMABLES = set(range(0xE0,0xF6+1))
+
     flag = "i"
     flag_description = "item prices"
 
@@ -419,6 +425,8 @@ class PriceObject(PriceMixin):
     def rank(self):
         if self.index in self.BANNED_INDEXES or self.index not in ITEM_NAMES:
             return -1
+        elif 'o' not in get_flags() and self.index in self.CONSUMABLES:
+          return -1
         elif self.is_event_only_item:
             rank = max([p.price for p in PriceObject.every]) + 2
         elif self.price <= 2:
@@ -515,7 +523,10 @@ class ShopObject(TableObject):
     def full_randomize(cls):
         super(ShopObject, cls).full_randomize()
         ShopObject.class_reseed("shops")
-        for pretty_shop_type in ["Magic", "Weapons", "Armor", "Items"]:
+        types=["Magic", "Weapons", "Armor", "Items"]
+        if 'o' not in get_flags():
+          types.remove('Items')
+        for pretty_shop_type in types:
             shops = [s for s in ShopObject.ranked if s.rank > 0 and
                      s.pretty_shop_type == pretty_shop_type]
             itemranks = defaultdict(set)

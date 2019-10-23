@@ -24,6 +24,7 @@ Flags:
     i  Randomize item prices.
     l  Randomize spell prices.
     m  Randomize monster stats.
+    o  Randomize consumables (without, just gear).
     p  Randomize shops.
     q  Randomize job equippable items.
     s  Randomize job stats.
