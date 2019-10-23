@@ -1,3 +1,4 @@
+#!/usr/bin/python2.7
 from randomtools.tablereader import (
         TableObject, get_global_label, tblpath, addresses, get_random_degree,
         get_activated_patches, mutate_normal, shuffle_normal, write_patch)
@@ -354,7 +355,8 @@ class MonsterObject(TableObject):
 
 
 class DropObject(TableObject):
-    flag = "t"
+    flag = "d"
+    flag_description = "monster drops and steals"
     custom_random_enable = True
 
     randomselect_attributes = [

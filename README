@@ -20,6 +20,7 @@ Flags:
     a  Randomize job learned abilities.
     b  Randomize job base commands.
     c  Randomize job outfit colors.
+    d  Randomize monster drops and steals.
     m  Randomize monster stats.
     p  Randomize shops.
     q  Randomize job equippable items.
