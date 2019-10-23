@@ -14,8 +14,6 @@ from os import path, remove
 
 VERSION = 7
 ALL_OBJECTS = None
-
-
 NAMES_PATH = path.join(tblpath, "item_names.txt")
 JOB_NAMES_PATH = path.join(tblpath, "job_names.txt")
 ITEM_NAMES, JOB_NAMES  = {}, []
@@ -78,7 +76,6 @@ def randomize_rng():
     random.shuffle(random_numbers)
     f.write("".join(map(chr, random_numbers)))
     f.close()
-
 
 class JobCrystalObject(TableObject):
     flag = "y"
@@ -388,7 +385,6 @@ class DropObject(TableObject):
 
 
 class PriceMixin(TableObject):
-    flag = "p"
     custom_random_enable = True
 
     @classproperty
@@ -412,10 +408,12 @@ class PriceMixin(TableObject):
             while self.price > 65000:
                 self.significand -= 1
 
-
 class PriceObject(PriceMixin):
     BANNED_INDEXES = ([0x00, 0x01, 0xF7, 0xF8] +
                       range(0x6F, 0x81) + range(0xD1, 0xE0))
+    
+    flag = "i"
+    flag_description = "item prices"
 
     @cached_property
     def rank(self):
@@ -461,6 +459,9 @@ class PriceObject(PriceMixin):
 
 
 class SpellPriceObject(PriceMixin):
+    flag = "l"
+    flag_description = "spell prices"
+  
     @cached_property
     def rank(self):
         return self.price
