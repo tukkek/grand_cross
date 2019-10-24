@@ -10,7 +10,7 @@ from randomtools.interface import (
     run_interface, rewrite_snes_meta, clean_and_write, finish_interface)
 from collections import defaultdict
 from os import path, remove
-
+from sys import exit
 
 VERSION = 7
 ALL_OBJECTS = None
@@ -1013,3 +1013,4 @@ if __name__ == "__main__":
     except Exception, e:
         print "ERROR: %s" % e
         raw_input("Press Enter to close this program.")
+        exit(1)
