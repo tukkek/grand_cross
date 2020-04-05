@@ -538,7 +538,8 @@ class ShopObject(TableObject):
                 all_items |= set(items)
                 avg += len(items)
 
-            if pretty_shop_type == "Magic":
+            magic_shop = pretty_shop_type == "Magic"
+            if magic_shop:
                 all_items = [SpellPriceObject.get(i) for i in all_items]
             else:
                 all_items = [PriceObject.get(i) for i in all_items]
@@ -554,10 +555,9 @@ class ShopObject(TableObject):
                     candidates = [i for i in all_items if i not in done_items]
                     if not candidates:
                         candidates = list(all_items)
-                    candidates = [c for c in candidates
-                                  if c not in chosen_items]
-                    chosen = PriceObject.get(base_index).get_similar(
-                        candidates, override_outsider=True)
+                    candidates = [c for c in candidates if c not in chosen_items]
+                    price = SpellPriceObject.get(base_index) if magic_shop else PriceObject.get(base_index)
+                    chosen = price.get_similar(candidates, override_outsider=True)
                     chosen_items.append(chosen)
                 assert len(chosen_items) == len(set(chosen_items))
                 chosen_items = [c.index for c in chosen_items]
