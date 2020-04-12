@@ -560,8 +560,8 @@ class ShopObject(TableObject):
                     chosen = price.get_similar(candidates, override_outsider=True)
                     chosen_items.append(chosen)
                 assert len(chosen_items) == len(set(chosen_items))
-                chosen_items = [c.index for c in chosen_items]
-                s.items = chosen_items
+                chosen_items = sorted(chosen_items,reverse=True,key=lambda i:i.price)
+                s.items = [c.index for c in chosen_items]
 
     def cleanup(self):
         if hasattr(self, "zero"):
