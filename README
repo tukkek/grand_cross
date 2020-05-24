@@ -37,6 +37,11 @@ Seed value:
 Output files:
     The randomizer will output a new, randomized rom with the seed in the filename.
 
+Patches:
+    You can use the `patcher.py` utility to apply patches from the `patches` folder. Run it without arguments for instructions.
+    You'll probably need to install `python-ips` if you don't have it installed already (`pip3 install python-ips`).
+    It's probably a good idea to always apply the `project-demi.ips` patch first (and `boss-xp.ips` as last one, if you want it).
+    
 Like this randomizer? Be sure to check out my other projects:
     FF6 Beyond Chaos Randomizer
         https://github.com/abyssonym/beyondchaos
