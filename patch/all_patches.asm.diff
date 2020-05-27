@@ -1,0 +1,25 @@
+29c29
+< incsrc world1/wind_crystal.asm
+---
+> ;incsrc world1/wind_crystal.asm
+51c51
+< incsrc world1/water_crystal.asm                          ; 09 Walse Meteor
+---
+> ;incsrc world1/water_crystal.asm                          ; 09 Walse Meteor
+63c63
+< incsrc world1/after_karnak_escape.asm
+---
+> ;incsrc world1/after_karnak_escape.asm
+74c74
+< incsrc world1/black_chocobo.asm                        ; 10 Ancient Library
+---
+> ;incsrc world1/black_chocobo.asm                        ; 10 Ancient Library
+93c93
+< incsrc world1/earth_crystal.asm                          ; 16 Four Meteors
+---
+> ;incsrc world1/earth_crystal.asm                          ; 16 Four Meteors
+251c251
+< incsrc ../../shared_asm/colors/galuf_mimic.asm
+\ No newline at end of file
+---
+> incsrc ../../shared_asm/colors/galuf_mimic.asm

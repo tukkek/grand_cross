@@ -8,6 +8,8 @@ Contact:    https://twitter.com/abyssonym
 --- HOW TO USE ---
 Running the randomizer:
     Windows users may use the executable file, "ff5gc.exe". Other users, please run "randomizer.py" using Python version 2.7.
+    Command format: randomizer.py [sourcefile] [flags] [seed] [randomness]
+    If you want to provide a randomness degree but no seed, pass an empty seed ("") as argument.
 
 Source rom file:
     This randomizer requires either the Japanese version or the RPGe translation of the Final Fantasy 5 rom for SNES. Here are the hashes that were used for testing:
@@ -15,7 +17,7 @@ Source rom file:
           d69b2115e17d1cf2cb3590d3f75febb9 (J)
 
 Flags:
-    Input the following flags to customize your randomization experience.
+    Input the following flags to customize your randomization experience:
 
     a  Randomize job learned abilities.
     b  Randomize job base commands.
@@ -27,6 +29,7 @@ Flags:
     o  Randomize consumables (without, just gear).
     p  Randomize shops.
     q  Randomize job equippable items.
+    r  Randomize jobs removed from pool (use with y).
     s  Randomize job stats.
     t  Randomize treasure.
     y  Randomize jobs obtained from crystal shards.
@@ -38,9 +41,9 @@ Output files:
     The randomizer will output a new, randomized rom with the seed in the filename.
 
 Patches:
-    After randommizing, you can run `patcher.py rom-name.smc project-demi.ips` to apply a quality-of-life patch to your ROM.
+    After randommizing, you can run `patcher.py rom-name.smc patch/project-demi.ips` to apply a quality-of-life patch to your ROM.
     You'll probably need to install `python-ips` if you don't have it installed already (`pip3 install python-ips`).
-    See `PATCH.md` for more details.
+    See `patch/README.md` for more details.
     
 Like this randomizer? Be sure to check out my other projects:
     FF6 Beyond Chaos Randomizer

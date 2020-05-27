@@ -77,6 +77,13 @@ def randomize_rng():
     f.write("".join(map(chr, random_numbers)))
     f.close()
 
+class RemoveJobs(TableObject):
+    flag = "r"
+    flag_description = "jobs removed from pool (use with y)"
+    custom_random_enable = True
+
+# Would've probably been better named as "job shard"
+# `self.crystal_index` also seems to be a misnomer, with job_index being more apt
 class JobCrystalObject(TableObject):
     flag = "y"
     flag_description = "jobs obtained from crystal shards"
@@ -203,6 +210,13 @@ class JobCrystalObject(TableObject):
             freelancer.crystal_index, chosen.crystal_index = (
                 chosen.crystal_index, freelancer.crystal_index)
         assert freelancer.has_fight_command
+        
+        if 'r' in get_flags():
+          chance=int(RemoveJobs.random_degree*100)
+          print('Removing jobs ({}% chance)...'.format(chance))
+          for c in candidates:
+            if random.random()<RemoveJobs.random_degree:
+              c.crystal_index=freelancer.crystal_index
 
     def cleanup(self):
         if "GBA" in get_global_label() and self.is_freelancer:
